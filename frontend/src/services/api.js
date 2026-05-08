@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// PHP server eke URL eka (Oya XAMPP/WAMP use karanawa nam meka galapena widihata wenas wenna oni)
-const API_URL = 'http://localhost/Attendance-timetable-system/backend';
+// Oyage backend eka thiyena htdocs path eka
+const API_URL = 'http://localhost/Attendance-timetable-system/backend/api';
 
 const api = axios.create({
     baseURL: API_URL,
