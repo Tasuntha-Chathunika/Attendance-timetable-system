@@ -1,46 +1,58 @@
-import { useState } from 'react'
-import Home from './pages/Home' // Home Page eka import kireema
-import Login from './components/Login'
-import Register from './components/Register'
+import { useState, useEffect } from 'react';
+import Login from './components/Login';
+import Register from './components/Register';
+import AdminDashboard from './pages/AdminDashboard';
+import LecturerDashboard from './pages/LecturerDashboard';
+import StudentDashboard from './pages/StudentDashboard';
 
 function App() {
-  // Page eka maru karanna hadana State eka (Dan string ekak use karanawa)
-  // 'home', 'login', or 'register'
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('login');
+  const [user, setUser] = useState(null);
 
-  // Page ekata yanna udaw wena wrapper function
-  const navigateTo = (pageName) => {
-    setCurrentPage(pageName);
+  // App eka load weddi localStorage eke kalin log wechcha user kenek innawada kiyala balanawa
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser));
+    }
+  }, []);
+
+  // Login form eken success unama me function eka wada karanawa
+  const handleLoginSuccess = (userData) => {
+    setUser(userData); // Userwa state ekata danawa, ethakota auto dashboard ekata yanawa
+  };
+
+  // Logout weddi localStorage eken userwa makala, aye login page ekata yawanawa
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+    setCurrentPage('login');
+  };
+
+  // 1. User kenek log wela innawa nam, eyage role eka balala dashboard ekata yawanawa
+  if (user) {
+    if (user.role === 'admin') return <AdminDashboard user={user} onLogout={handleLogout} />;
+    if (user.role === 'lecturer') return <LecturerDashboard user={user} onLogout={handleLogout} />;
+    if (user.role === 'student') return <StudentDashboard user={user} onLogout={handleLogout} />;
   }
 
+  // 2. User kenek log wela natham, Login hari Register hari pennanawa
   return (
-    <div className="relative min-h-screen bg-gray-100">
-
-      {/* CurrentPage eka anuwa component eka wenas kireema */}
-      {currentPage === 'home' && (
-        <Home
-          onNavigateToLogin={() => navigateTo('login')}
-          onNavigateToRegister={() => navigateTo('register')}
+    <div className="min-h-screen bg-gray-100">
+      {currentPage === 'login' && (
+        <Login 
+          onNavigateToRegister={() => setCurrentPage('register')} 
+          onLoginSuccess={handleLoginSuccess} 
         />
       )}
-
-      {currentPage === 'login' && <Login />}
-      {currentPage === 'register' && <Register />}
-
-      {/* Page Login hari Register hari nam, Home ekata yanna back button ekak */}
-      {currentPage !== 'home' && (
-        <div className="absolute top-5 left-5">
-          <button
-            onClick={() => navigateTo('home')}
-            className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
-          >
-            Back to Home
-          </button>
-        </div>
+      
+      {currentPage === 'register' && (
+        <Register 
+          onNavigateToLogin={() => setCurrentPage('login')} 
+        />
       )}
-
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
