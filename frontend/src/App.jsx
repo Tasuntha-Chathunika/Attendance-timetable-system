@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Home from './pages/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import AdminDashboard from './pages/AdminDashboard';
@@ -6,7 +7,7 @@ import LecturerDashboard from './pages/LecturerDashboard';
 import StudentDashboard from './pages/StudentDashboard';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('login');
+  const [currentPage, setCurrentPage] = useState('home');
   const [user, setUser] = useState(null);
 
   // App eka load weddi localStorage eke kalin log wechcha user kenek innawada kiyala balanawa
@@ -36,11 +37,19 @@ function App() {
     if (user.role === 'student') return <StudentDashboard user={user} onLogout={handleLogout} />;
   }
 
-  // 2. User kenek log wela natham, Login hari Register hari pennanawa
+  // 2. User kenek log wela natham, Home, Login hari Register hari pennanawa
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-slate-50 font-sans">
+      {currentPage === 'home' && (
+        <Home 
+          onNavigateToLogin={() => setCurrentPage('login')} 
+          onNavigateToRegister={() => setCurrentPage('register')}
+        />
+      )}
+
       {currentPage === 'login' && (
         <Login 
+          onNavigateToHome={() => setCurrentPage('home')}
           onNavigateToRegister={() => setCurrentPage('register')} 
           onLoginSuccess={handleLoginSuccess} 
         />
@@ -48,6 +57,7 @@ function App() {
       
       {currentPage === 'register' && (
         <Register 
+          onNavigateToHome={() => setCurrentPage('home')}
           onNavigateToLogin={() => setCurrentPage('login')} 
         />
       )}
