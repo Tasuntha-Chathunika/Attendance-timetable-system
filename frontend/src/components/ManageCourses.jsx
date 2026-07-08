@@ -90,21 +90,21 @@ const ManageCourses = () => {
   return (
     <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden mt-2">
       {/* Premium Header */}
-      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 px-8 py-10 border-b border-emerald-100/50">
+      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 px-6 py-5 border-b border-emerald-100/50">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-emerald-600 shadow-md border border-emerald-50">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-emerald-600 shadow-sm border border-emerald-50">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
             </div>
             <div>
-              <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">Course Management</h2>
-              <p className="mt-1 text-slate-500 font-medium">Design curriculum, assign unique codes, and manage subjects.</p>
+              <h2 className="text-2xl font-extrabold text-slate-800 tracking-tight">Course Management</h2>
+              <p className="mt-0.5 text-sm text-slate-500 font-medium">Design curriculum, assign unique codes, and manage subjects.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="p-8">
+      <div className="p-6">
         {/* Message Alert */}
         {message.text && (
           <div className={`p-4 mb-8 rounded-xl flex justify-between items-center shadow-md border backdrop-blur-md animate-fade-in-up ${message.type === 'error' ? 'bg-red-50 text-red-800 border-red-200' : 'bg-green-50 text-green-800 border-green-200'}`}>
@@ -126,18 +126,18 @@ const ManageCourses = () => {
           
           {/* Add Course Glassmorphic Form */}
           <div className="lg:w-1/3">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sticky top-8">
-              <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-6 border border-emerald-100">
+            <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 sticky top-6">
+              <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-5 border border-emerald-100">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-6 tracking-tight">Create New Course</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-4 tracking-tight">Create New Course</h3>
               <form onSubmit={handleAddCourse} className="space-y-5">
                 <div>
                   <label className="block text-sm font-bold text-slate-700 mb-2" htmlFor="courseName">Course Name</label>
                   <input
                     type="text"
                     id="courseName"
-                    className="w-full bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all placeholder-gray-400"
+                    className="w-full bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all placeholder-gray-400"
                     placeholder="e.g. Advanced AI Robotics"
                     value={courseName}
                     onChange={(e) => setCourseName(e.target.value)}
@@ -148,16 +148,13 @@ const ManageCourses = () => {
                   <input
                     type="text"
                     id="courseCode"
-                    className="w-full bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all placeholder-gray-400 uppercase"
+                    className="w-full bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all placeholder-gray-400 uppercase"
                     placeholder="e.g. CS404"
                     value={courseCode}
                     onChange={(e) => setCourseCode(e.target.value)}
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 mt-4"
-                >
+                <button type="submit" disabled={loading} className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md shadow-emerald-500/20 transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 text-base">
                   Publish Course
                 </button>
               </form>

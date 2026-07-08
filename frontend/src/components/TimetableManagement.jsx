@@ -130,21 +130,21 @@ const TimetableManagement = () => {
   return (
     <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden mt-2">
       {/* Premium Header */}
-      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 px-8 py-10 border-b border-purple-100/50">
+      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 px-4 py-4 border-b border-purple-100/50">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-purple-600 shadow-md border border-purple-50">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-purple-600 shadow-sm border border-purple-50">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
             </div>
             <div>
-              <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">Schedule Planner</h2>
-              <p className="mt-1 text-slate-500 font-medium">Allocate lecturers, set class times, and manage the weekly timetable.</p>
+              <h2 className="text-xl font-extrabold text-slate-800 tracking-tight">Schedule Planner</h2>
+              <p className="mt-0.5 text-sm text-slate-500 font-medium">Allocate lecturers, set class times, and manage the weekly timetable.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="p-8">
+      <div className="p-4">
         {/* Message Alert */}
         {message.text && (
           <div className={`p-4 mb-8 rounded-xl flex justify-between items-center shadow-md border backdrop-blur-md animate-fade-in-up ${message.type === 'error' ? 'bg-red-50 text-red-800 border-red-200' : 'bg-green-50 text-green-800 border-green-200'}`}>
@@ -166,19 +166,16 @@ const TimetableManagement = () => {
           
           {/* Create Schedule Widget */}
           <div className="lg:w-1/3">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sticky top-8">
-              <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-6 border border-purple-100">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-6 tracking-tight">Assign New Class</h3>
-              <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 sticky top-6">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 tracking-tight">Assign New Class</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-bold text-slate-700 mb-2">Course</label>
                   <select
                     name="course_id"
                     value={formData.course_id}
                     onChange={handleChange}
-                    className="w-full appearance-none bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium cursor-pointer"
+                    className="w-full appearance-none bg-slate-50 border border-gray-200 text-slate-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium cursor-pointer"
                   >
                     <option value="">Select a Course...</option>
                     {courses.map(c => (
@@ -193,7 +190,7 @@ const TimetableManagement = () => {
                     name="lecturer_id"
                     value={formData.lecturer_id}
                     onChange={handleChange}
-                    className="w-full appearance-none bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium cursor-pointer"
+                    className="w-full appearance-none bg-slate-50 border border-gray-200 text-slate-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium cursor-pointer"
                   >
                     <option value="">Select a Lecturer...</option>
                     {lecturers.map(l => (
@@ -208,7 +205,7 @@ const TimetableManagement = () => {
                     name="day_of_week"
                     value={formData.day_of_week}
                     onChange={handleChange}
-                    className="w-full appearance-none bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium cursor-pointer"
+                    className="w-full appearance-none bg-slate-50 border border-gray-200 text-slate-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium cursor-pointer"
                   >
                     <option value="">Select Day...</option>
                     {daysOfWeek.map(day => (
@@ -225,7 +222,7 @@ const TimetableManagement = () => {
                       name="start_time"
                       value={formData.start_time}
                       onChange={handleChange}
-                      className="w-full bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium"
+                      className="w-full bg-slate-50 border border-gray-200 text-slate-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium"
                     />
                   </div>
                   <div>
@@ -235,14 +232,14 @@ const TimetableManagement = () => {
                       name="end_time"
                       value={formData.end_time}
                       onChange={handleChange}
-                      className="w-full bg-slate-50 border border-gray-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium"
+                      className="w-full bg-slate-50 border border-gray-200 text-slate-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all font-medium"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 mt-6"
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 px-4 rounded-lg transition-all shadow-md hover:shadow-lg mt-4 text-sm"
                 >
                   Confirm Schedule
                 </button>
@@ -258,7 +255,7 @@ const TimetableManagement = () => {
                 <p className="font-medium text-slate-500">Loading schedule...</p>
               </div>
             ) : timetable.length > 0 ? (
-              <div className="space-y-8">
+              <div className="space-y-6">
                 {daysOfWeek.map((day) => {
                   const dayEntries = timetable.filter(entry => entry.day_of_week === day);
                   if (dayEntries.length === 0) return null;
@@ -277,15 +274,15 @@ const TimetableManagement = () => {
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {dayEntries.map((entry) => (
-                          <div key={entry.id} className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm hover:shadow-lg transition-all group relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-500"></div>
+                          <div key={entry.id} className="bg-white rounded-xl p-3 border border-slate-100 shadow-sm hover:shadow-md transition-all group relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-1 h-full bg-indigo-500"></div>
                             
-                            <div className="flex justify-between items-start mb-4 pl-2">
+                            <div className="flex justify-between items-start mb-2 pl-2">
                               <div>
-                                <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 font-bold text-xs rounded border border-slate-200 mb-2">
+                                <span className="inline-block px-2 py-0.5 bg-slate-100 text-slate-600 font-bold text-[10px] rounded border border-slate-200 mb-1">
                                   {entry.course_code}
                                 </span>
-                                <h4 className="text-lg font-bold text-slate-800 leading-tight">{entry.course_name}</h4>
+                                <h4 className="text-sm font-bold text-slate-800 leading-tight">{entry.course_name}</h4>
                               </div>
                               
                               <button 
@@ -297,21 +294,21 @@ const TimetableManagement = () => {
                               </button>
                             </div>
                             
-                            <div className="space-y-3 pl-2">
-                              <div className="flex items-center text-slate-600 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100 w-fit">
+                            <div className="space-y-1.5 pl-2">
+                              <div className="flex items-center text-slate-600 bg-slate-50 px-2 py-1 rounded border border-slate-100 w-fit">
                                 <svg className="w-4 h-4 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span className="text-sm font-bold tracking-wide">
+                                <span className="text-[11px] font-bold tracking-wide">
                                   {formatTime(entry.start_time)} - {formatTime(entry.end_time)}
                                 </span>
                               </div>
                               
-                              <div className="flex items-center pt-2">
+                              <div className="flex items-center pt-1">
                                 <img 
                                   src={`https://ui-avatars.com/api/?name=${entry.lecturer_name}&background=3b82f6&color=fff&rounded=true&bold=true`}
                                   alt={entry.lecturer_name}
-                                  className="w-8 h-8 rounded-full border border-blue-100 shadow-sm mr-3 group-hover:scale-110 transition-transform"
+                                  className="w-6 h-6 rounded-full border border-blue-100 shadow-sm mr-2 group-hover:scale-110 transition-transform"
                                 />
-                                <span className="text-sm font-semibold text-slate-700">{entry.lecturer_name}</span>
+                                <span className="text-xs font-semibold text-slate-700">{entry.lecturer_name}</span>
                               </div>
                             </div>
                           </div>
