@@ -78,7 +78,7 @@ const AdminDashboard = ({ user: initialUser, onLogout }) => {
           <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-xl shadow-lg flex items-center justify-center transform -rotate-3">
              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
           </div>
-          <h1 className="text-2xl font-extrabold tracking-tight">ATMS <span className="text-indigo-400">Pro</span></h1>
+          <h1 className="text-2xl font-extrabold tracking-tight ml-3"><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">ATMS</span> <span className="text-indigo-400 font-bold">Pro</span></h1>
         </div>
 
         <nav className="flex-1 p-4 space-y-1 mt-2 overflow-y-auto custom-scrollbar">
