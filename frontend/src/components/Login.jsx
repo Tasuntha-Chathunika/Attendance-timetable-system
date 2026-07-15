@@ -1,6 +1,4 @@
 import { useState } from 'react';
-
-import Logo from './Logo';
 import api from '../services/api';
 
 const Login = ({ onNavigateToHome, onNavigateToRegister, onLoginSuccess }) => {
@@ -84,7 +82,10 @@ const Login = ({ onNavigateToHome, onNavigateToRegister, onLoginSuccess }) => {
                     
                     {/* Mobile Logo (Visible only on small screens) */}
                     <div className="lg:hidden flex flex-col items-center mb-8">
-                        <Logo className="w-16 h-16" textClassName="text-4xl" />
+                        <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl shadow-lg flex items-center justify-center mb-4 transform -rotate-3">
+                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                        </div>
+                        <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">ATMS</h2>
                     </div>
 
                     <div className="mb-10 text-center lg:text-left">
@@ -103,7 +104,7 @@ const Login = ({ onNavigateToHome, onNavigateToRegister, onLoginSuccess }) => {
                         </div>
                     )}
 
-                    <form className="space-y-6" onSubmit={handleLogin} autoComplete="off">
+                    <form className="space-y-6" onSubmit={handleLogin}>
                         <div className="space-y-5">
                             <div className="relative group">
                                 <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Username or Email</label>
@@ -113,7 +114,6 @@ const Login = ({ onNavigateToHome, onNavigateToRegister, onLoginSuccess }) => {
                                     </div>
                                     <input 
                                         type="text" 
-                                        autoComplete="off"
                                         required 
                                         value={username} 
                                         onChange={(e) => setUsername(e.target.value)} 
@@ -130,7 +130,6 @@ const Login = ({ onNavigateToHome, onNavigateToRegister, onLoginSuccess }) => {
                                     </div>
                                     <input 
                                         type="password" 
-                                        autoComplete="new-password"
                                         required 
                                         value={password} 
                                         onChange={(e) => setPassword(e.target.value)} 
