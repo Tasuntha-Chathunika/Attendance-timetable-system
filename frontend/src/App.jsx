@@ -10,9 +10,9 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [user, setUser] = useState(null);
 
-  // App eka load weddi localStorage eke kalin log wechcha user kenek innawada kiyala balanawa
+  // App eka load weddi sessionStorage eke kalin log wechcha user kenek innawada kiyala balanawa
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
+    const loggedInUser = sessionStorage.getItem('user');
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser));
     }
@@ -23,9 +23,9 @@ function App() {
     setUser(userData); // Userwa state ekata danawa, ethakota auto dashboard ekata yanawa
   };
 
-  // Logout weddi localStorage eken userwa makala, aye login page ekata yawanawa
+  // Logout weddi sessionStorage eken userwa makala, aye login page ekata yawanawa
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     setUser(null);
     setCurrentPage('login');
   };

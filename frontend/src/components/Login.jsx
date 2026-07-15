@@ -19,7 +19,7 @@ const Login = ({ onNavigateToHome, onNavigateToRegister, onLoginSuccess }) => {
 
             if (response.data.status === 'success') {
                 setMessage('Login Successful!');
-                localStorage.setItem('user', JSON.stringify(response.data.user));
+                sessionStorage.setItem('user', JSON.stringify(response.data.user));
                 
                 setTimeout(() => {
                     if (onLoginSuccess) {

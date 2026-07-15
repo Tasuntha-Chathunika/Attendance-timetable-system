@@ -22,8 +22,8 @@ const ProfileManagement = ({ user, onProfileUpdate }) => {
       if (res.data.status === 'success') {
         setMessage({ type: 'success', text: 'Profile updated successfully!' });
         if (onProfileUpdate && res.data.user) {
-          const updatedUser = { ...user, ...res.data.user };
-          localStorage.setItem('user', JSON.stringify(updatedUser));
+          const updatedUser = { ...user, full_name: formData.full_name, email: formData.email };
+          sessionStorage.setItem('user', JSON.stringify(updatedUser));
           onProfileUpdate(updatedUser);
         }
       } else {
